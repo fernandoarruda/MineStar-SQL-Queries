@@ -28,3 +28,7 @@ SELECT --TOP (100)
 FROM [mshist].[dbo].[V_HEALTH_EVENT]
 WHERE locationTimestamp > '2025-01-31 23:59:59.000' --AND  locationTimestamp < '2025-03-01 00:00:01.000'
   AND duration IS NOT NULL
+  --AND type = 'Health Maintenance' -- Eventos de sistema apenas
+  --AND type = 'Health Dat'a --Eventos máquina
+  --AND alarmDescription like '%%' --filtrar por evento especifico
+  --AND mid = '116'--filtrar por MID/módulo especifico
