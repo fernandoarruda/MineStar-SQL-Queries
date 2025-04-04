@@ -17,13 +17,13 @@ Each folder may contain:
 
 Below is a summary of the main folders in the repository, including the purpose and content of the queries they contain:
 
-### `/Fernando Arruda/`
-- **Query:** `Health_Events.sql`
-- **Description:** Retrieves health events both for machine and maintenance.
-
 ### `/Consultoria_Michel/`
 - **Query:** `fleet_performance_by_shift.sql`
 - **Description:** Breaks down fleet performance by shift and operator for performance benchmarking.
+
+### `/Fernando Arruda/`
+- **Query:** `Health_Events.sql`
+- **Description:** Retrieves health events both for machine and maintenance.
 
 ### `/Ingrid Mendonca/`
 - **Query:** `material_movement_tracking.sql`
