@@ -2,6 +2,7 @@ SELECT
     -- From Bucket Load
     b.BUCKET_LOAD_ID,
     b.MACHINE_ID,
+    m.NAME AS LOADER_NAME, -- NEW: Loader machine name
     b.TIME_END,
     b.MATERIAL,
     
@@ -22,7 +23,10 @@ SELECT
     
     -- From Truck Load
     t.TRUCK_ID,
-    t.OVERRIDE_MATERIAL
+    t.OVERRIDE_MATERIAL,
+    
+    -- Truck name from CA_C_TRUCK
+    ct.NAME AS TRUCK_NAME
 
 FROM [TerrainProdFiles].[dbo].[CA_P_BUCKET_LOAD] AS b
 
@@ -45,5 +49,13 @@ LEFT JOIN [TerrainProdFiles].[dbo].[CA_P_TRUCK_LOAD_BUCKETS] AS tb
 -- Join Truck Load to bring Truck Info
 LEFT JOIN [TerrainProdFiles].[dbo].[CA_P_TRUCK_LOAD] AS t
     ON tb.TRUCK_LOAD_ID = t.TRUCK_LOAD_ID
+
+-- Join Truck table to get Truck Name
+LEFT JOIN [TerrainProdFiles].[dbo].[CA_C_TRUCK] AS ct
+    ON t.TRUCK_ID = ct.TRUCK_ID
+
+-- NEW: Join Machine table to get Loader Name
+LEFT JOIN [TerrainProdFiles].[dbo].[CA_C_MACHINE] AS m
+    ON b.MACHINE_ID = m.MACHINE_ID
 
 WHERE b.TIME_END >= '2024-02-01'; -- Optional filter
